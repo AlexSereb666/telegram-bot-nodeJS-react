@@ -12,9 +12,9 @@ function App() {
 
   return (
     <div className="App">
-      work
-      <button onClick={onClose}>Закрыть</button>
-      <div>{user?.username}</div>
+      work<br/>
+      <button onClick={onClose}>Закрыть</button><br/>
+      <div>name: {user?.username}</div><br/>
       <button onClick={onToggleButton}>toggle</button>
     </div>
   );
