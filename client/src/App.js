@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import AppRouter from './components/routes/AppRouter';
 
 function App() {
-  const {tg, user, onClose, onToggleButton} = useTelegram();
+  const {tg} = useTelegram();
 
   useEffect(() => {
     tg.ready();
