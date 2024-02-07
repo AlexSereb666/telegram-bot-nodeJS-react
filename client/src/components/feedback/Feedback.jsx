@@ -3,7 +3,7 @@ import './Feedback.css';
 
 const Feedback = () => {
     return (
-        <div>
+        <div className="feedback-container">
             обратная связь
         </div>
     )
