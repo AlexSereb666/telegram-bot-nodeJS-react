@@ -25,7 +25,7 @@ const Feedback = () => {
     }, [])
 
     useEffect(() => {
-        if (!message.trim() || !selectProblem) {
+        if (!message || !selectProblem) {
             tg.MainButton.hide()
         } else {
             tg.MainButton.show()
