@@ -28,6 +28,15 @@ const Feedback = () => {
     }, [message, selectProblem])
 
     useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        const userDataParam = params.get('userData');
+        if (userDataParam) {
+            const userData = JSON.parse(decodeURIComponent(userDataParam));
+            setMessage(userData);
+        }
+    }, []);
+
+    useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
         return () => {
             tg.offEvent('mainButtonClicked', onSendData)
