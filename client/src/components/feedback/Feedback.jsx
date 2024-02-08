@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './Feedback.css';
 import CustomDropdown from "../customDropdown/CustomDropdown";
+import { useTelegram } from '../../hooks/useTelegram'
 
 const Feedback = () => {
     const listThemes = [
@@ -11,8 +12,26 @@ const Feedback = () => {
         {id: 4, name: 'Другое'},
     ]
 
+    const { tg } = useTelegram();
+
     const [message, setMessage] = useState('');
     const [selectProblem, setSelectProblem] = useState("")
+
+    useEffect(() => {
+        tg.MainButton.serParams({
+            text: 'Отправить сообщение'
+        })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() => {
+        if (!message.trim() || !selectProblem) {
+            tg.MainButton.hide()
+        } else {
+            tg.MainButton.show()
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [message, selectProblem])
 
     const handleSelectProblem= (value) => {
         setSelectProblem(value)
