@@ -24,7 +24,8 @@ const Feedback = () => {
             message
         }
         tg.sendData(JSON.stringify(data))
-    })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [message, selectProblem])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -32,7 +33,7 @@ const Feedback = () => {
             tg.offEvent('mainButtonClicked', onSendData)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [message, selectProblem])
 
     useEffect(() => {
         tg.MainButton.setParams({
