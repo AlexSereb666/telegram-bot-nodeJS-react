@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import './Feedback.css';
 import CustomDropdown from "../customDropdown/CustomDropdown";
 import { useTelegram } from '../../hooks/useTelegram'
@@ -16,6 +16,23 @@ const Feedback = () => {
 
     const [message, setMessage] = useState('');
     const [selectProblem, setSelectProblem] = useState("")
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const onSendData = useCallback(() => {
+        const data = {
+            selectProblem,
+            message
+        }
+        tg.sendData(JSON.stringify(data))
+    })
+
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     useEffect(() => {
         tg.MainButton.setParams({
