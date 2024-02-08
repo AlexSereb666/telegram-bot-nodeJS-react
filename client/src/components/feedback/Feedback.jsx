@@ -16,6 +16,7 @@ const Feedback = () => {
 
     const handleSelectProblem= (value) => {
         setSelectProblem(value)
+        console.log(selectProblem)
     };
 
     return (
