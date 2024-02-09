@@ -19,7 +19,9 @@ const Feedback = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const onSendData = useCallback(() => {
+        const type = 'feedback'
         const data = {
+            type,
             selectProblem,
             message
         }
@@ -27,14 +29,15 @@ const Feedback = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [message, selectProblem])
 
-    useEffect(() => {
+    // пример передачи данных через url //
+    /*useEffect(() => {
         const params = new URLSearchParams(window.location.search);
         const userDataParam = params.get('userData');
         if (userDataParam) {
             const userData = JSON.parse(decodeURIComponent(userDataParam));
             setMessage(userData);
         }
-    }, []);
+    }, []);*/
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
