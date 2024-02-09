@@ -6,9 +6,8 @@ import { useTelegram } from '../../hooks/useTelegram'
 const Feedback = () => {
     const listThemes = [
         {id: 1, name: 'Технические ошибки'},
-        {id: 2, name: 'Оплата'},
-        {id: 3, name: 'Личные данные'},
-        {id: 4, name: 'Оплата'},
+        {id: 2, name: 'Личные данные'},
+        {id: 3, name: 'Оплата'},
         {id: 4, name: 'Другое'},
     ]
 
