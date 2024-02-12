@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './CustomDropdown.css'
 
-const CustomDropdown = ({ options, onSelect, text, selectedItem = '' }) => {
+const CustomDropdown = ({ options, onSelect, text, selectedItem = '', containerStyle }) => {
   const [selectedOption, setSelectedOption] = useState(selectedItem);
 
   const handleSelectChange = (event) => {
@@ -15,14 +15,16 @@ const CustomDropdown = ({ options, onSelect, text, selectedItem = '' }) => {
   }, [selectedItem]);
 
   return (
-    <select className='Custom-Dropdown' value={selectedOption} onChange={handleSelectChange}>
-      <option className='Custom-Dropdown__main' value="" disabled>{text}</option>
-      {options.map((option) => (
-        <option className='Custom-Dropdown__option' key={option.id} value={option.name}>
-          {option.name}
-        </option>
-      ))}
-    </select>
+    <div className='Custom-Dropdown-container' style={containerStyle}>
+      <select className='Custom-Dropdown' value={selectedOption} onChange={handleSelectChange}>
+        <option className='Custom-Dropdown__main' value="" disabled>{text}</option>
+        {options.map((option) => (
+          <option className='Custom-Dropdown__option' key={option.id} value={option.name}>
+            {option.name}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 };
 

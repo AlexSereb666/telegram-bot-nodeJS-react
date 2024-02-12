@@ -1,0 +1,32 @@
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    margin: auto;
+}
+
+.menu-panel-button {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+.menu-panel-button-type,
+.menu-panel-button-view {
+    flex: 1;
+    margin: 0 10px;
+    text-align: center;
+}
+
+.menu-list-product {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.menu-list-product > * {
+    flex-basis: calc(33.33% - 20px);
+    margin: 8px;
+}

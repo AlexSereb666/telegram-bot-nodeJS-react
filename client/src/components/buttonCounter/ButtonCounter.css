@@ -1,0 +1,22 @@
+.button-counter-btn-minus {
+    font-size: 16px;
+    padding: 5px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #e64d45;
+    border-color: #e64d45;
+    width: 35px;
+    border-radius: 5px;
+}
+
+.button-counter-btn-plus {
+    font-size: 16px;
+    padding: 5px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #f7a918;
+    border-color: #f7a918;
+    width: 35px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
