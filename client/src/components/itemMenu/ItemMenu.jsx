@@ -9,7 +9,7 @@ const ItemMenu = ({ img, name, price, id, cartItems, setCartItems, initialPrice 
     const [isAddButtonVisible, setIsAddButtonVisible] = useState(true);
 
     const handleAddButtonClick = () => {
-        setCount(1);
+        handleIncrement()
         setIsAddButtonVisible(false);
     };
 
