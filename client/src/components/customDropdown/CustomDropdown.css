@@ -5,6 +5,7 @@
   border: 3px solid #f7a918;
   border-radius: 5px;
   background-color: transparent;
+  color: var(--tg-theme-text-color);
 }
 .Custom-Dropdown__main {
   color: #64371f;

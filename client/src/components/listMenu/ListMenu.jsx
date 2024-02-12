@@ -28,9 +28,9 @@ const ListMenu = () => {
         })
 
         if (cartItems.length > 0) {
-            tg.MainButton.hide()
-        } else {
             tg.MainButton.show()
+        } else {
+            tg.MainButton.hide()
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [cartItems])
@@ -102,7 +102,7 @@ const ListMenu = () => {
                         options={listType}
                         onSelect={handleSelectType}
                         text="Тип..."
-                        containerStyle={{ width: '175px' }}
+                        containerStyle={{ width: '155px' }}
                     />
                 </div>
                 <div className="menu-panel-button-view">
@@ -110,7 +110,7 @@ const ListMenu = () => {
                         options={listView}
                         onSelect={handleSelectView}
                         text="Вид..."
-                        containerStyle={{ width: '175px' }}
+                        containerStyle={{ width: '155px' }}
                     />
                 </div>
             </div>
