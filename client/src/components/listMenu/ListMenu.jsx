@@ -3,7 +3,7 @@ import { useTelegram } from '../../hooks/useTelegram';
 import CustomDropdown from "../customDropdown/CustomDropdown";
 import './ListMenu.css'
 import ItemMenu from "../itemMenu/ItemMenu";
-import imgPath from './photo_2023-08-31_00-30-34.jpg';
+//import imgPath from './photo_2023-08-31_00-30-34.jpg';
 
 const ListMenu = () => {
     const { tg } = useTelegram();
@@ -12,6 +12,7 @@ const ListMenu = () => {
     const [selectView, setSelectView] = useState("")
 
     const [cartItems, setCartItems] = useState([]);
+    const [listProduct, setListProduct] = useState([]);
 
     const calculateTotalPrice = () => {
         let totalPrice = 0;
@@ -58,6 +59,7 @@ const ListMenu = () => {
         {id: 4, name: 'Батончик'},
     ]
 
+    /*
     const listProduct = [
         {id: 1, name: 'Капучино', price: 100, img: imgPath, block: false, type: 'Напитки', view: 'Кофе' },
         {id: 2, name: 'Капучино', price: 200, img: imgPath, block: false, type: 'Напитки', view: 'Кофе' },
@@ -93,6 +95,20 @@ const ListMenu = () => {
         {id: 32, name: 'Капучино', price: 100, img: imgPath, block: false, type: 'Напитки', view: 'Кофе' },
         {id: 33, name: 'Капучино', price: 100, img: imgPath, block: false, type: 'Напитки', view: 'Кофе' },
     ]
+    */
+
+    useEffect(() => {
+        // Выполняем запрос к вашему локальному серверу при монтировании компонента
+        fetch('http://192.168.56.1:5000/api/product/getAllProducts')
+            .then(response => response.json())
+            .then(data => {
+                setListProduct(data.products);
+            })
+            .catch(error => {
+                console.error('Ошибка при загрузке продуктов:', error);
+            });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <div className="menu-container">
