@@ -99,7 +99,7 @@ const ListMenu = () => {
 
     useEffect(() => {
         // Выполняем запрос к вашему локальному серверу при монтировании компонента
-        fetch('http://192.168.56.1:5000/api/product/getAllProducts')
+        fetch('http://192.168.231.208:5000/api/product/getAllProducts')
             .then(response => response.json())
             .then(data => {
                 setListProduct(data.products);
