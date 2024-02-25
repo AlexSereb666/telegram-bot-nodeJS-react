@@ -1,40 +1,31 @@
-const { $host } = require("./index");
+import { $host } from "./index";
 
-const addProduct = async (product) => {
+export const addProduct = async (product) => {
     const {data} = await $host.post('api/product/create', product)
     return data
 }
 
-const getOne = async (id) => {
+export const getOne = async (id) => {
     const {data} = await $host.get(`api/product/getOneProduct/${id}`)
     return data
 }
 
-const getAllPage = async () => {
+export const getAllPage = async () => {
     const {data} = await $host.get('api/product/getAllPageProducts')
     return data
 }
 
-const getAll = async () => {
+export const getAll = async () => {
     const {data} = await $host.get('api/product/getAllProducts')
-    return data
+    return data?.products
 }
 
-const editProduct = async (product, id) => {
+export const editProduct = async (product, id) => {
     const {data} = await $host.put(`api/product/updateProduct/${id}`, product)
     return data
 }
 
-const deleteProduct = async (id) => {
+export const deleteProduct = async (id) => {
     const {data} = await $host.delete(`api/product/deleteProduct/${id}`)
     return data
 }
-
-module.exports = {
-    addProduct,
-    getOne,
-    getAllPage,
-    getAll,
-    editProduct,
-    deleteProduct
-};

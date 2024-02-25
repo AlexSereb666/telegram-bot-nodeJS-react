@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './CustomDropdown.css'
+import './CustomDropdown.css';
 
 const CustomDropdown = ({ options, onSelect, text, selectedItem = '', containerStyle }) => {
   const [selectedOption, setSelectedOption] = useState(selectedItem);
@@ -9,6 +9,10 @@ const CustomDropdown = ({ options, onSelect, text, selectedItem = '', containerS
     setSelectedOption(value);
     onSelect(value);
   };
+
+  useEffect(() => {
+    setSelectedOption(selectedItem);
+  }, [selectedItem]);
 
   useEffect(() => {
     setSelectedOption(selectedItem);

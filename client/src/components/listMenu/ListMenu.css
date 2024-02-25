@@ -4,13 +4,18 @@
     justify-content: center;
     align-items: center;
     width: 350px;
-    margin: auto;
+    margin: 60px auto 0;
+    position: relative;
 }
 
 .menu-panel-button {
     display: flex;
     justify-content: space-between;
     padding-bottom: 10px;
+
+    position: fixed;
+    z-index: 999;
+    top: 5px;
 }
 
 .menu-panel-button-type,
@@ -29,4 +34,26 @@
 .menu-list-product > * {
     flex-basis: calc(33.33% - 20px);
     margin: 8px;
+}
+
+.menu-list-img-cat {
+    margin-top: 50px;
+}
+
+.menu-list-img-cat img {
+    width: 150px;
+    height: auto;
+    user-select: none;
+    pointer-events: none;
+    position: relative;
+}
+
+.menu-list-img-cat-name {
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    margin-left: -20px;
+    color:rgb(87, 87, 78);
+    user-select: none;
+    pointer-events: none;
 }

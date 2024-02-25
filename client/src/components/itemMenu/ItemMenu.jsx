@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react'
-import './ItemMenu.css'
-import ButtonItem from '../buttonItem/ButtonItem'
-import ButtonCounter from '../buttonCounter/ButtonCounter'
+import React, { useState, useEffect } from 'react';
+import './ItemMenu.css';
+import ButtonItem from '../buttonItem/ButtonItem';
+import ButtonCounter from '../buttonCounter/ButtonCounter';
 
 const ItemMenu = ({ img, name, price, id, cartItems, setCartItems, initialPrice }) => {
 
     const [count, setCount] = useState(0);
-    const [isAddButtonVisible, setIsAddButtonVisible] = useState(true);
+
+    // Проверка наличия компонента в корзине
+    const isInCart = cartItems.some(item => item.id === id);
 
     const handleAddButtonClick = () => {
-        handleIncrement()
-        setIsAddButtonVisible(false);
+        handleIncrement();
     };
 
     const handleIncrement = () => {
@@ -40,18 +41,21 @@ const ItemMenu = ({ img, name, price, id, cartItems, setCartItems, initialPrice 
     };
 
     useEffect(() => {
-        if (count === 0) {
-            setIsAddButtonVisible(true);
+        const itemIndex = cartItems.findIndex(item => item.id === id);
+        if (itemIndex !== -1) {
+            setCount(cartItems[itemIndex].count);
         }
-    }, [count]);
+    }, [cartItems, id]);
 
     return (
         <div className='item-menu-container'>
             <div className='item-menu-img'>
-                <img src={img} alt="not found img"/>
-                <div className={`circle-overlay ${count > 0 ? 'visible' : ''}`}>
-                    {count}
-                </div>
+                <img src={process.env.REACT_APP_API_URL + img} alt="not found img"/>
+                {isInCart && (
+                    <div className={`circle-overlay ${count > 0 ? 'visible' : ''}`}>
+                        {count}
+                    </div>
+                )}
             </div>
             <div className='item-menu-name-and-price'>
                 <div className='item-menu-name'>
@@ -62,21 +66,20 @@ const ItemMenu = ({ img, name, price, id, cartItems, setCartItems, initialPrice 
                 </div>
             </div>
             <div className='item-menu-button'>
-                {isAddButtonVisible && (
+                {isInCart ? (
+                    <ButtonCounter 
+                        onClickPlus={handleIncrement}
+                        onClickMinus={handleDecrement}
+                    />
+                ) : (
                     <ButtonItem
                         name="Добавить"
                         onClick={handleAddButtonClick}
                     />
                 )}
-                {count > 0 && 
-                <ButtonCounter 
-                    onClickPlus={handleIncrement}
-                    onClickMinus={handleDecrement}
-                />
-                }
             </div>
         </div>
-    )
+    );
 }
 
 export default ItemMenu;
