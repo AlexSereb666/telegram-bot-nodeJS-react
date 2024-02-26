@@ -1,8 +1,8 @@
 import React from "react";
 import InputMask from "react-input-mask";
-import './InputAuth.css';
+import './CustomInput.css';
 
-const InputAuth = (props) => {
+const CustomInput = (props) => {
     return (
         <div className="input-group">
             <InputMask
@@ -20,4 +20,4 @@ const InputAuth = (props) => {
     );
 };
 
-export default InputAuth;
+export default CustomInput;

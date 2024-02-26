@@ -3,21 +3,21 @@
 }
 .input-group__input {
   font: inherit;
-  color: #f9f4e6;
-  width: 100%;
+  color: var(--tg-theme-text-color);
+  width: 300px;
   padding: 10px;
   border: none;
   border-radius: 4px;
-  outline: 2px solid #f9f4e6;
+  outline: 2px solid #f7a918;
   background-color: transparent;
   transition: outline-color 500ms;
-  font-size: 22px;
+  font-size: 20px;
 }
 .input-group__input:not(:last-child) {
   margin-bottom: 25px;
 }
 .input-group__input:is(:focus, :valid) {
-  outline-color: #6f47db;
+  outline-color: #f7a918;
 }
 .input-group__label {
   pointer-events: none;
@@ -26,7 +26,7 @@
   top: 0;
   left: 0;
   translate: 10px 10px;
-  color: #f9f4e6;
+  color: var(--tg-theme-text-color);
   font-family: 'arnamu', fallback-fonts;
   transition: translate 500ms, scale 500ms;
   font-size: 22px;
@@ -36,5 +36,5 @@
   padding-inline: 5px;
   translate: 10px -14px;
   scale: 0.8;
-  background-color: rgba(91, 86, 67, 0.5);
+  background-color: var(--tg-theme-bg-color);
 }

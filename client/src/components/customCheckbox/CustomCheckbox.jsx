@@ -4,7 +4,7 @@ import './CustomCheckbox.css';
 const CustomCheckbox = ({ label, productId, onChange, onChangeSolo, check}) => {
   const [checked, setChecked] = useState(check); // По умолчанию выделен
 
-  const handleCheckboxChange = () => {
+  const handleCheckboxChange = (e) => {
     const newCheckedState = !checked;
     setChecked(newCheckedState);
 

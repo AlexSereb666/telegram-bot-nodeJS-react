@@ -44,7 +44,7 @@
   display: flex;
   background-color: rgba(48, 23, 5, 0.445);
   box-shadow: 0 0 50px rgba(207, 136, 4, 0.164);
-  border-radius: 3%;
+  border-radius: 10px;
   margin-bottom: 10px;
   width: 355px;
 }
@@ -160,4 +160,9 @@
   border-color: #f7a918;
   border-radius: 8px;
   cursor: pointer;
+}
+
+.basket-container-line:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
 }

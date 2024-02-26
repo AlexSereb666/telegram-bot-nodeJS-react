@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useMemo } from "react";
 import './Basket.css'
 import { getAllProductsInBasket, removeFromBasket } from '../../http/basketAPI'
-import { getUserById } from '../../http/userAPI'
+import { getUserById, updateUserAddress } from '../../http/userAPI'
 import ButtonBasket from "../buttonBasket/ButtonBasket";
 import CustomCheckbox from '../customCheckbox/CustomCheckbox'
 import StarImg from '../../assets/img/star.png'
 import MessageBox from "../messageBox/MessageBox";
 import deleteImg from '../../assets/img/delete.png'
 import imgCat from '../../assets/img/cat.png'
+import { useNavigate } from 'react-router-dom'
 
 const Basket = () => {
     const [listProducts, setListProducts] = useState([])
@@ -24,6 +25,8 @@ const Basket = () => {
     const [address, setAddress] = useState(false)
     const [addressText, setAddressText] = useState("")
     const [addressCheck, setAddressCheck] = useState(false)
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
@@ -51,8 +54,17 @@ const Basket = () => {
     }, []);
 
     useEffect(() => {
-        getUserById(userId).then((item) => setUser(item.user))
+        getUserById(userId).then((item) => { 
+            setUser(item.user)
+            setAddressText(item.user.address === 'Не указан' ? '' : item.user.address) 
+        })
     }, [])
+
+    useEffect(() => {
+        getUserById(userId).then((item) => { 
+            setUser(item.user)
+        })
+    }, [addressText])
 
     useMemo(() => {
         setSelectedProducts([])
@@ -139,30 +151,8 @@ const Basket = () => {
     };
 
     const editAddress = () => {
-        if (addressText.trim() !== '') {
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
+        if (addressText.trim() !== '' || addressText.trim() !== 'Не указан') {
+            updateUserAddress(userId, addressText).then((res) => console.log(res.message))
         }
 
         setShowModalAddress(false)
@@ -177,6 +167,10 @@ const Basket = () => {
 
     const closeModalAddress = () => {
         setShowModalAddress(false)
+    }
+
+    const selectedProduct = (productId) => {
+        navigate(`/cardProduct/${userId}/${productId}`)
     }
 
     return (
@@ -196,20 +190,22 @@ const Basket = () => {
                         </div>
                         <div className="basket-menu-button-selected-product">
                             Выбрано продуктов: {selectedProducts.length}
-                            <button>Ввести промокод</button>
+                            <button>Промокоды</button>
                         </div>
                         <div className="basket-menu-button-delivery">
                             <CustomCheckbox
-                                label={`с доставкой (${user.address})`}
+                                label={`с доставкой (${addressText})`}
                                 onChangeSolo={handleCheckboxCheckAddress}
                                 check={addressCheck}
                             />
-                            <button>Изменить</button>
+                            <button onClick={() => setShowModalAddress(true)}>
+                            Изменить
+                            </button>
                         </div>
                     </div>
                     <div className="basket-list-product">
                         {listProducts.map((data, index) => (
-                            <div key={index} className='basket-container-line'>
+                            <div key={index} className='basket-container-line' onClick={() => selectedProduct(data.id)}>
                                 <div className='basket-container-line-img'>
                                     <img src={process.env.REACT_APP_API_URL + data.img} alt="Нет изображения"/>
                                 </div>
@@ -225,11 +221,12 @@ const Basket = () => {
                                 <div className='basket-container-line-price'>
                                     {data.price}₽
                                 </div>
-                                <div className='basket-container-line-delete-one'>
+                                <div className='basket-container-line-delete-one' onClick={(e) => e.stopPropagation()}>
                                     <img src={deleteImg} alt="Нет изображения" onClick={() => handleDeleteProduct(data)}/>
                                 </div>
-                                <div className='basket-container-line-checkbox'>
-                                    <CustomCheckbox productId={data} onChange={handleCheckboxChange} check={isInSelectedList(data)} />
+                                <div className='basket-container-line-checkbox' onClick={(e) => e.stopPropagation()}>
+                                    <CustomCheckbox productId={data} onChange={handleCheckboxChange} 
+                                    check={isInSelectedList(data)} />
                                 </div>
                             </div>
                         ))}
