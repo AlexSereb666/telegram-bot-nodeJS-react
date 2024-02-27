@@ -190,7 +190,7 @@ const Basket = () => {
                         </div>
                         <div className="basket-menu-button-selected-product">
                             Выбрано продуктов: {selectedProducts.length}
-                            <button>Промокоды</button>
+                            <button onClick={() => navigate('/promocode')}>Промокоды</button>
                         </div>
                         <div className="basket-menu-button-delivery">
                             <CustomCheckbox
