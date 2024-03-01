@@ -29,3 +29,51 @@
     background: linear-gradient(to right, rgba(255, 255, 255, 0), #f7a918, rgba(255, 255, 255, 0));
     z-index: 1;
 }
+
+.menu-promo-code-container-list {
+    padding-top: 190px;
+    width: 320px;
+}
+
+.menu-promo-code-container-list-item {
+    display: flex;
+    padding-top: 20px;
+    border-bottom: 2px solid #9e9052;
+}
+
+.menu-promo-code-container-list-item-code {
+    font-size: 18px;
+    font-weight: bold;
+    width: 110px;
+}
+
+.menu-promo-code-container-list-item-discount {
+    font-size: 18px;
+    width: 60px;
+    font-weight: bold;
+    color: rgb(219, 3, 3);
+    pointer-events: none;
+    user-select: none;
+}
+
+.menu-promo-code-container-list-item-code-product {
+    font-size: 18px;
+    width: 130px;
+    font-weight: bold;
+    pointer-events: none;
+    user-select: none;
+}
+
+.menu-promo-code-container-list-item-code-product-btn-delete img {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.menu-promo-code-container-list-item-code-product-btn-delete img:hover {
+    transform: scale(0.9);
+}
+
+.menu-promo-code-container-list-item-code-product-btn-delete img {
+    width: 20px;
+    height: auto;
+}

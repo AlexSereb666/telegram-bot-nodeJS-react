@@ -49,6 +49,7 @@
     font-weight: bold;
     color: var(--tg-theme-text-color);
     padding-bottom: 10px;
+    text-align: center;
 }
 
 .product-card-container-text-info-price {

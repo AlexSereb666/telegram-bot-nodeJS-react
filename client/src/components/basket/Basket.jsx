@@ -56,7 +56,7 @@ const Basket = () => {
     useEffect(() => {
         getUserById(userId).then((item) => { 
             setUser(item.user)
-            setAddressText(item.user.address === 'Не указан' ? '' : item.user.address) 
+            setAddressText(item.user.address === 'Не указан' ? 'Не указан' : item.user.address) 
         })
     }, [])
 
@@ -152,7 +152,7 @@ const Basket = () => {
 
     const editAddress = () => {
         if (addressText.trim() !== '' || addressText.trim() !== 'Не указан') {
-            updateUserAddress(userId, addressText).then((res) => console.log(res.message))
+            updateUserAddress(userId, addressText).then((res) => user.address = addressText)
         }
 
         setShowModalAddress(false)
@@ -164,13 +164,22 @@ const Basket = () => {
             setShowModalAddress(true)
         }
     };
-
+ 
     const closeModalAddress = () => {
-        setShowModalAddress(false)
-    }
+        if (addressText.trim() === '' || addressText.trim() === 'Не указан') {
+            setAddressCheck(false);
+        } else {
+            setAddressCheck(true);
+        }
+        setShowModalAddress(false);
+    };
 
     const selectedProduct = (productId) => {
         navigate(`/cardProduct/${userId}/${productId}`)
+    }
+
+    const selectedPromoCode = () => {
+        navigate(`/promocode/${userId}`)
     }
 
     return (
@@ -190,7 +199,7 @@ const Basket = () => {
                         </div>
                         <div className="basket-menu-button-selected-product">
                             Выбрано продуктов: {selectedProducts.length}
-                            <button onClick={() => navigate('/promocode')}>Промокоды</button>
+                            <button onClick={selectedPromoCode}>Промокоды</button>
                         </div>
                         <div className="basket-menu-button-delivery">
                             <CustomCheckbox
@@ -250,7 +259,7 @@ const Basket = () => {
                     onNo={closeModalAddress}
                     textNo={"Закрыть"}
                     textYes={"Изменить"}
-                    inputValue={addressText}
+                    inputValue={addressText === 'Не указан' ? '' : addressText}
                     setInputValue={setAddressText}
                 />
             )}

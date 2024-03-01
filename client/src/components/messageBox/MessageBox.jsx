@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./MessageBox.css";
 import CustomInput from '../customInput/CustomInput'
 
-const MessageBox = ({ message, onYes, onNo, textNo, textYes, check, inputValue, setInputValue }) => {
+const MessageBox = ({ message, onYes, onNo, textNo, textYes, check, 
+  inputValue, setInputValue, oneButton = false }) => {
   return (
     <div className="modal">
       <div className="modal-content">
@@ -15,7 +16,10 @@ const MessageBox = ({ message, onYes, onNo, textNo, textYes, check, inputValue, 
           type="text"
         />)}
         <div className="modal-buttons">
-          <button onClick={onNo}>{textNo}</button>
+          {!oneButton
+          ? (<button onClick={onNo}>{textNo}</button>)
+          : (<></>)
+          }
           <button onClick={onYes}>{textYes}</button>
         </div>
       </div>

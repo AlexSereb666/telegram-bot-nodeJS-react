@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './CustomCheckbox.css';
 
 const CustomCheckbox = ({ label, productId, onChange, onChangeSolo, check}) => {
-  const [checked, setChecked] = useState(check); // По умолчанию выделен
+  const [checked, setChecked] = useState(check);
 
   const handleCheckboxChange = (e) => {
     const newCheckedState = !checked;
