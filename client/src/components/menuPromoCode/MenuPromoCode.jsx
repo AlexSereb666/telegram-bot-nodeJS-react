@@ -9,9 +9,8 @@ import { getPromoCodeByCode } from '../../http/promoCodeAPI'
 import MessageBox from "../messageBox/MessageBox";
 import { getAllProductsInBasket } from '../../http/basketAPI'
 import btnDelete from '../../assets/img/btn-delete-rect.png'
-import { observer } from "mobx-react-lite";
 
-const MenuPromoCode = observer(() => {
+const MenuPromoCode = () => {
     const { promoCode } = useContext(Context)
     const { idUser } = useParams()
     const navigate = useNavigate()
@@ -180,6 +179,6 @@ const MenuPromoCode = observer(() => {
             )}
         </div>
     )
-})
+}
 
 export default MenuPromoCode

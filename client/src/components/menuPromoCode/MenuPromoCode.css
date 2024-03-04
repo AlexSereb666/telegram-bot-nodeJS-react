@@ -45,6 +45,7 @@
     font-size: 18px;
     font-weight: bold;
     width: 110px;
+    color: var(--tg-theme-text-color);
 }
 
 .menu-promo-code-container-list-item-discount {
@@ -62,6 +63,7 @@
     font-weight: bold;
     pointer-events: none;
     user-select: none;
+    color: var(--tg-theme-text-color);
 }
 
 .menu-promo-code-container-list-item-code-product-btn-delete img {

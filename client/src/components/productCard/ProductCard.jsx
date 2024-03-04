@@ -36,7 +36,7 @@ const ProductCard = () => {
                     </div>
                     <div className="product-card-container-text-info-rating">
                         <div className="product-card-container-text-info-rating-star-img">
-                            <img src={imgStart} alt="Куда-то делать рейтинговая звезда:(" />
+                            <img src={imgStart} alt="Куда-то делась рейтинговая звезда:(" />
                         </div>
                         <div className="product-card-container-text-info-rating-score">
                             {product?.averageRating.toFixed(1)}
