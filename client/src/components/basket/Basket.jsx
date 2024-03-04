@@ -55,6 +55,7 @@ const Basket = () => {
     }, [selectedProducts])
 
     const onSendData = useCallback(() => {
+        localStorage.clear()
         const type = 'basketProducts'
         const data = { type, products: selectedProducts,  delivery: address}
         tg.sendData(JSON.stringify(data))
