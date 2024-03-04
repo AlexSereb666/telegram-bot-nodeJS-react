@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import './Basket.css'
 import { getAllProductsInBasket, removeFromBasket } from '../../http/basketAPI'
 import { getUserById, updateUserAddress } from '../../http/userAPI'
@@ -9,9 +9,14 @@ import MessageBox from "../messageBox/MessageBox";
 import deleteImg from '../../assets/img/delete.png'
 import imgCat from '../../assets/img/cat.png'
 import { useNavigate } from 'react-router-dom'
+import { useTelegram } from '../../hooks/useTelegram';
 
 const Basket = () => {
+    const { tg } = useTelegram()
+
     const [listProducts, setListProducts] = useState([])
+    const [listPromoCode, setListPromoCode] = useState([])
+
     const [userId, setUserId] = useState(1)
     const [user, setUser] = useState(null)
     const [selectedProducts, setSelectedProducts] = useState([])
@@ -24,9 +29,45 @@ const Basket = () => {
     const [flagDeleteProduct, setFlagDeleteProduct] = useState(true)
     const [address, setAddress] = useState(false)
     const [addressText, setAddressText] = useState("")
-    const [addressCheck, setAddressCheck] = useState(false)
 
     const navigate = useNavigate()
+
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selectedProducts])
+
+    useEffect(() => {
+        tg.MainButton.setParams({
+            text: `Оформить заказ ${calculateTotalPrice()} ₽`,
+            color: '#24cc12'
+        })
+
+        if (selectedProducts.length > 0) {
+            tg.MainButton.show()
+        } else {
+            tg.MainButton.hide()
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selectedProducts])
+
+    const onSendData = useCallback(() => {
+        const type = 'basketProducts'
+        const data = { type, products: selectedProducts,  delivery: address}
+        tg.sendData(JSON.stringify(data))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selectedProducts])
+
+    const calculateTotalPrice = () => {
+        let totalPrice = 0;
+        selectedProducts.forEach(item => {
+            totalPrice += item.price;
+        });
+        return totalPrice;
+    }
 
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
@@ -38,6 +79,13 @@ const Basket = () => {
     }, []);
 
     useEffect(() => {
+        const storedPromoCodes = JSON.parse(localStorage.getItem('appliedPromoCodes'));
+        if (storedPromoCodes) {
+            setListPromoCode(storedPromoCodes);
+        }
+    }, [])
+
+    useEffect(() => {
         try {
             getAllProductsInBasket(userId).then((items) => {
                 const updatedItems = items.map((item, index) => ({
@@ -45,13 +93,32 @@ const Basket = () => {
                     selectedId: new Date().getTime() + index
                 }));
                 setListProducts(updatedItems);
+    
+                // Здесь обрабатываем промокоды, когда список продуктов доступен
+                const uniquePromoCodes = Array.from(new Set(listPromoCode.map(promoCode => promoCode.productName)))
+                    .map(productName => {
+                        return listPromoCode.find(promoCode => promoCode.productName === productName);
+                    });
+    
+                const updatedProducts = updatedItems.map(product => {
+                    const matchingPromoCode = uniquePromoCodes.find(promoCode => promoCode.productName === product.name);
+                    if (matchingPromoCode) {
+                        const discountedPrice = product.price * (1 - (matchingPromoCode.discount / 100));
+                        return {
+                            ...product,
+                            price: discountedPrice
+                        };
+                    }
+                    return product;
+                });
+                setListProducts(updatedProducts);
             });
-
+    
         } catch (e) {
             console.log(e);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [listPromoCode]);
 
     useEffect(() => {
         getUserById(userId).then((item) => { 
@@ -167,6 +234,12 @@ const Basket = () => {
 
     const closeModalAddress = () => {
         setShowModalAddress(false)
+
+        // не работает //
+        if (addressText === 'Не указан' || addressText.trim() === '') {
+            setAddress(false)
+        }
+        // а че?? а ниче хз //
     }
 
     const selectedProduct = (productId) => {
@@ -196,7 +269,7 @@ const Basket = () => {
                             <CustomCheckbox
                                 label={`с доставкой (${addressText})`}
                                 onChangeSolo={handleCheckboxCheckAddress}
-                                check={addressCheck}
+                                check={address}
                             />
                             <button onClick={() => setShowModalAddress(true)}>
                             Изменить

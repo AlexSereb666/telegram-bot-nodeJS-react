@@ -1,6 +1,8 @@
 .menu-promo-code-container {
     width: 355px;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
 }
 
 .menu-promo-code-container-menu {
