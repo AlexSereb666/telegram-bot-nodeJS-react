@@ -17,7 +17,7 @@ const Basket = () => {
     const [listProducts, setListProducts] = useState([])
     const [listPromoCode, setListPromoCode] = useState([])
 
-    const [userId, setUserId] = useState(1)
+    const [userId, setUserId] = useState(new URLSearchParams(window.location.search).get('idUser'))
     const [user, setUser] = useState(null)
     const [selectedProducts, setSelectedProducts] = useState([])
 
@@ -69,15 +69,6 @@ const Basket = () => {
         });
         return totalPrice;
     }
-
-    useEffect(() => {
-        const params = new URLSearchParams(window.location.search);
-        const idUserParam = params.get('idUser');
-        if (idUserParam) {
-            const id = JSON.parse(decodeURIComponent(idUserParam));
-            setUserId(id);
-        }
-    }, []);
 
     useEffect(() => {
         const storedPromoCodes = JSON.parse(localStorage.getItem('appliedPromoCodes'));

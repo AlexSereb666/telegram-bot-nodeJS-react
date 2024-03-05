@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './ItemMenu.css';
 import ButtonItem from '../buttonItem/ButtonItem';
 import ButtonCounter from '../buttonCounter/ButtonCounter';
+import { useNavigate } from 'react-router-dom'
 
-const ItemMenu = ({ img, name, price, id, cartItems, setCartItems, initialPrice }) => {
+const ItemMenu = ({ img, name, price, id, cartItems, setCartItems, initialPrice, userId }) => {
 
     const [count, setCount] = useState(0);
+
+    const navigate = useNavigate()
 
     // Проверка наличия компонента в корзине
     const isInCart = cartItems.some(item => item.id === id);
@@ -47,10 +50,14 @@ const ItemMenu = ({ img, name, price, id, cartItems, setCartItems, initialPrice 
         }
     }, [cartItems, id]);
 
+    const selectedProduct = (productId) => {
+        navigate(`/cardProduct/${userId}/${productId}`)
+    }
+
     return (
         <div className='item-menu-container'>
             <div className='item-menu-img'>
-                <img src={process.env.REACT_APP_API_URL + img} alt="not found img"/>
+                <img src={process.env.REACT_APP_API_URL + img} alt="not found img" onClick={() => selectedProduct(id)} />
                 {isInCart && (
                     <div className={`circle-overlay ${count > 0 ? 'visible' : ''}`}>
                         {count}

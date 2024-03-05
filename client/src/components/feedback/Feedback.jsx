@@ -48,7 +48,8 @@ const Feedback = () => {
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: 'Отправить сообщение'
+            text: 'Отправить сообщение',
+            color: '#24cc12'
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

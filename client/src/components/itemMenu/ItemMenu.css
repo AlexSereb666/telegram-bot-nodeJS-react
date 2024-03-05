@@ -1,12 +1,26 @@
 .item-menu-container {
     padding: 1px;
     text-align: center;
+    animation: scaleUp 0.5s ease forwards;
+    transform: scale(0);
+}
+
+@keyframes scaleUp {
+    to {
+        transform: scale(1);
+    }
 }
 
 .item-menu-img img {
     width: 80px;
     height: 80px;
     object-fit: cover;
+    cursor: pointer;
+}
+
+.item-menu-img img:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
 }
 
 .item-menu-img {

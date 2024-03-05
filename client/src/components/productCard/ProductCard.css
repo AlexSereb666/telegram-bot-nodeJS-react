@@ -1,8 +1,14 @@
 .product-card-container {
     width: 355px;
     margin: 0 auto;
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
 }
-
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
 .product-card-container-btn-back img {
     width: 40px;
     height: auto;

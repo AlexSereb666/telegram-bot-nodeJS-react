@@ -20,6 +20,8 @@ const ListMenu = () => {
     const [listType, setListType] = useState([])
     const [listView, setListView] = useState([])
 
+    const [userId, setUserId] = useState(new URLSearchParams(window.location.search).get('idUser'))
+
     const calculateTotalPrice = () => {
         let totalPrice = 0;
         cartItems.forEach(item => {
@@ -195,6 +197,7 @@ const ListMenu = () => {
                                 cartItems={cartItems}
                                 setCartItems={setCartItems}
                                 initialPrice={item.price}
+                                userId={userId}
                             />
                         ))
                 ) : (

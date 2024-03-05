@@ -17,7 +17,7 @@ export const getAllPage = async () => {
 
 export const getAll = async () => {
     const {data} = await $host.get('api/product/getAllProducts')
-    return data?.products
+    return data
 }
 
 export const editProduct = async (product, id) => {

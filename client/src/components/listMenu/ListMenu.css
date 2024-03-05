@@ -15,7 +15,9 @@
 
     position: fixed;
     z-index: 999;
-    top: 5px;
+    top: 0px;
+
+    background-color: var(--tg-theme-bg-color);
 }
 
 .menu-panel-button-type,
@@ -23,6 +25,32 @@
     flex: 1;
     margin: 0 10px;
     text-align: center;
+}
+
+.menu-panel-button-type {
+    animation: slideFromLeft 0.5s ease forwards;
+}
+
+.menu-panel-button-view {
+    animation: slideFromRight 0.5s ease forwards;
+}
+
+@keyframes slideFromLeft {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideFromRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
 }
 
 .menu-list-product {
