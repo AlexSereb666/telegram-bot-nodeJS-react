@@ -1,0 +1,32 @@
+.datetime-picker-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.datetime-picker-container span {
+    padding-right: 15px;
+    font-size: 24px;
+    font-family: 'arnamu';
+}
+.custom-datepicker {
+    font-size: 16px;
+    padding: 8px;
+    border: 2px solid #BE815F;
+    border-radius: 4px;
+    color: #BE815F;
+    background-color: #855034;
+    font-family: 'PostalShrift';
+}
+.react-datepicker-popper {
+    z-index: 1;
+}
+.react-datepicker {
+    font-family: 'arnamu';
+}
+.react-datepicker__day--selected {
+    background-color: #28921a;
+    /* Цвет фона выбранного дня */
+    color: #fff;
+    /* Цвет текста для выбранного дня */
+}
+  

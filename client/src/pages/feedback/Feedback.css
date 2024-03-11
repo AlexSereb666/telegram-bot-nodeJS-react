@@ -27,6 +27,8 @@
   font-size: 28px;
   color: var(--tg-theme-text-color);
   padding: 10px 0;
+  pointer-events: none;
+  user-select: none;
 }
 .feedback-container__title-input {
   padding-bottom: 10px;

@@ -20,9 +20,15 @@ const addRating = async (userId, productId, rate) => {
     return data;
 }
 
+const getOneFeedbackUser = async(id) => {
+    const {data} = await $host.get(`api/feedback/getOneFeedbackUser/${id}`)
+    return data;
+}
+
 module.exports = {
     getUserById,
     updateUserAddress,
     getUserProductRating,
-    addRating
+    addRating,
+    getOneFeedbackUser
 };

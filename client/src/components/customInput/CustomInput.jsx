@@ -14,6 +14,8 @@ const CustomInput = (props) => {
                 required={props.required}
                 max={props.max}
                 min={props.min}
+                onFocus={props.onFocus}
+                onBlur={props.onBlur}
             />
             <label className="input-group__label">{props.label}</label>
         </div>
