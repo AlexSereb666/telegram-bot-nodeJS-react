@@ -4,6 +4,7 @@ import './PersonalOrders.css';
 import CustomDropdown from "../../components/customDropdown/CustomDropdown";
 import { getOrderOne } from '../../http/orderAPI';
 import ButtonItem from "../../components/buttonItem/ButtonItem";
+import DateTimePicker from "../../components/dateTimePicker/DateTimePicker";
 
 const PersonalOrders = () => {
     const { idUser } = useParams()
@@ -13,14 +14,22 @@ const PersonalOrders = () => {
 
     const [listOrders, setListOrders] = useState([])
 
+    const [selectedDate, setSelectedDate] = useState(new Date());
+
     const handleSelectStatus= (value) => {
         setSelectStatus(value)
     };
 
+    const handleDateChange = date => {
+        setSelectedDate(date);
+    };
+
+    // получаем заказы и всю инфу о них //
     useEffect(() => {
         getOrderOne(idUser).then((item) => setListOrders(item))
     }, [])
 
+    // уникальные статусы, для фильтров //
     useMemo(() => {
         const uniqueStatus = [...new Set(listOrders.map(order => order.status))];
         setListStatus([{ id: 0, name: 'Все' }, ...uniqueStatus.map((item, index) => ({ id: index + 1, name: item }))]);
@@ -29,7 +38,7 @@ const PersonalOrders = () => {
     const totalPrice = (items) => { 
         let sum = 0;
         for (let item of items) {
-            sum += item.product.price;
+            sum += item.currentPrice;
         }
 
         return sum;
@@ -40,14 +49,17 @@ const PersonalOrders = () => {
             <div className="personal-orders-container-menu">
                 <div className="personal-orders-container-menu-filter">
                     <div className="personal-orders-container-menu-filter-date">
-                        ДАТА
+                        <DateTimePicker
+                            defaultDate={selectedDate}
+                            onDateChange={handleDateChange}
+                        />
                     </div>
                     <div className="personal-orders-container-menu-filter-status">
                         <CustomDropdown
                             options={listStatus}
                             onSelect={handleSelectStatus}
                             text="Статус..."
-                            containerStyle={{ width: '180px' }}
+                            containerStyle={{ width: '140px' }}
                             selectedItem={selectStatus}
                         />
                     </div>
@@ -80,7 +92,7 @@ const PersonalOrders = () => {
                             {item.status}
                         </div>
                         <div className="personal-orders-container-list-item-price">
-                            {totalPrice(item.order_products)}
+                            {totalPrice(item.order_products)}₽
                         </div>
                     </div>
                 ))}

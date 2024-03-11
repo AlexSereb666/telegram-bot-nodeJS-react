@@ -3,7 +3,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './DateTimePicker.css';
 
-const DateTimePicker = ({ defaultDate, onDateChange }) => {
+const DateTimePicker = ({ defaultDate, onDateChange, label }) => {
   const [selectedDate, setSelectedDate] = useState(defaultDate);
 
   const handleDateChange = date => {
@@ -13,7 +13,7 @@ const DateTimePicker = ({ defaultDate, onDateChange }) => {
 
   return (
     <div className="datetime-picker-container">
-      <span>Выберите дату:</span>
+      <span>{label}</span>
       <DatePicker
         className="custom-datepicker"
         selected={selectedDate}

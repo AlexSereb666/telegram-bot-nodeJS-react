@@ -1,0 +1,15 @@
+.personal-orders-container {
+    width: 355px;
+    margin: 0 auto;
+}
+
+.personal-orders-container-menu-filter {
+    display: flex;
+    gap: 10px;
+}
+
+.personal-orders-container-menu-sort {
+    display: flex;
+    padding: 10px 0;
+    gap: 10px;
+}

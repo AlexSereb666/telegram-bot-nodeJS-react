@@ -4,17 +4,17 @@
     align-items: center;
 }
 .datetime-picker-container span {
-    padding-right: 15px;
     font-size: 24px;
     font-family: 'arnamu';
 }
 .custom-datepicker {
-    font-size: 16px;
-    padding: 8px;
-    border: 2px solid #BE815F;
+    font-size: 20px;
+    padding: 8.7px;
+    width: 180px;
+    border: 3px solid #f7a918;
     border-radius: 4px;
-    color: #BE815F;
-    background-color: #855034;
+    color: var(--tg-theme-text-color);
+    background-color: transparent;
     font-family: 'PostalShrift';
 }
 .react-datepicker-popper {
