@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
+import { useParams } from "react-router-dom";
 import './Basket.css'
 import { getAllProductsInBasket, removeFromBasket } from '../../http/basketAPI'
 import { getUserById, updateUserAddress } from '../../http/userAPI'
-import ButtonBasket from "../buttonBasket/ButtonBasket";
-import CustomCheckbox from '../customCheckbox/CustomCheckbox'
+import ButtonBasket from "../../components/buttonBasket/ButtonBasket";
+import CustomCheckbox from '../../components/customCheckbox/CustomCheckbox'
 import StarImg from '../../assets/img/star.png'
-import MessageBox from "../messageBox/MessageBox";
+import MessageBox from "../../components/messageBox/MessageBox";
 import deleteImg from '../../assets/img/delete.png'
 import imgCat from '../../assets/img/cat.png'
 import { useNavigate } from 'react-router-dom'
@@ -17,7 +18,8 @@ const Basket = () => {
     const [listProducts, setListProducts] = useState([])
     const [listPromoCode, setListPromoCode] = useState([])
 
-    const [userId, setUserId] = useState(new URLSearchParams(window.location.search).get('idUser'))
+    const { idUser } = useParams();
+
     const [user, setUser] = useState(null)
     const [selectedProducts, setSelectedProducts] = useState([])
 
@@ -79,7 +81,7 @@ const Basket = () => {
 
     useEffect(() => {
         try {
-            getAllProductsInBasket(userId).then((items) => {
+            getAllProductsInBasket(idUser).then((items) => {
                 const updatedItems = items.map((item, index) => ({
                     ...item,
                     selectedId: new Date().getTime() + index
@@ -113,14 +115,14 @@ const Basket = () => {
     }, [listPromoCode]);
 
     useEffect(() => {
-        getUserById(userId).then((item) => { 
+        getUserById(idUser).then((item) => { 
             setUser(item.user)
             setAddressText(item.user.address === 'Не указан' ? '' : item.user.address) 
         })
     }, [])
 
     useEffect(() => {
-        getUserById(userId).then((item) => { 
+        getUserById(idUser).then((item) => { 
             setUser(item.user)
         })
     }, [addressText])
@@ -165,7 +167,7 @@ const Basket = () => {
             listProducts.forEach(product => {
                 const selectedProduct = selectedProducts.find(selected => selected.selectedId === product.selectedId);
                 if (selectedProduct) {
-                    removeFromBasket(userId, selectedProduct.id)
+                    removeFromBasket(idUser, selectedProduct.id)
                 }
             });
 
@@ -182,7 +184,7 @@ const Basket = () => {
     const deleteSelectedProduct = () => {
         setShowModal(false)
         try {
-            removeFromBasket(userId, productToDelete.id)
+            removeFromBasket(idUser, productToDelete.id)
     
             // Обновляем состояние basketProducts после удаления продукта
             setListProducts(prevProducts => prevProducts.filter(product => product !== productToDelete));
@@ -211,7 +213,7 @@ const Basket = () => {
 
     const editAddress = () => {
         if (addressText.trim() !== '' || addressText.trim() !== 'Не указан') {
-            updateUserAddress(userId, addressText).then((res) => console.log(res.message))
+            updateUserAddress(idUser, addressText).then((res) => console.log(res.message))
         }
 
         setShowModalAddress(false)
@@ -235,7 +237,7 @@ const Basket = () => {
     }
 
     const selectedProduct = (productId) => {
-        navigate(`/cardProduct/${userId}/${productId}`)
+        navigate(`/cardProduct/${idUser}/${productId}`)
     }
 
     return (
@@ -255,7 +257,7 @@ const Basket = () => {
                         </div>
                         <div className="basket-menu-button-selected-product">
                             Выбрано продуктов: {selectedProducts.length}
-                            <button onClick={() => navigate(`/promocode/${userId}`)}>Промокоды</button>
+                            <button onClick={() => navigate(`/promocode/${idUser}`)}>Промокоды</button>
                         </div>
                         <div className="basket-menu-button-delivery">
                             <CustomCheckbox

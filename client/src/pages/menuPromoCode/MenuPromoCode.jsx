@@ -2,11 +2,11 @@ import React, { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import './MenuPromoCode.css'
 import btnBack from '../../assets/img/button-back.png'
-import CustomInput from "../customInput/CustomInput";
-import ButtonItem from '../buttonItem/ButtonItem'
+import CustomInput from "../../components/customInput/CustomInput";
+import ButtonItem from '../../components/buttonItem/ButtonItem'
 import { Context } from '../../index';
 import { getPromoCodeByCode } from '../../http/promoCodeAPI'
-import MessageBox from "../messageBox/MessageBox";
+import MessageBox from "../../components/messageBox/MessageBox";
 import { getAllProductsInBasket } from '../../http/basketAPI'
 import btnDelete from '../../assets/img/btn-delete-rect.png'
 

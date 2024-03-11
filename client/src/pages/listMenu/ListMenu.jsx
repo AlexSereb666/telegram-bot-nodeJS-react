@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { useParams } from "react-router-dom";
 import { useTelegram } from '../../hooks/useTelegram';
-import CustomDropdown from "../customDropdown/CustomDropdown";
+import CustomDropdown from "../../components/customDropdown/CustomDropdown";
 import './ListMenu.css'
-import ItemMenu from "../itemMenu/ItemMenu";
+import ItemMenu from "../../components/itemMenu/ItemMenu";
 import { getAll } from '../../http/productAPI'
 import { getOneType } from '../../http/typeAPI'
 import { getOneView } from '../../http/viewAPI'
@@ -20,7 +21,7 @@ const ListMenu = () => {
     const [listType, setListType] = useState([])
     const [listView, setListView] = useState([])
 
-    const [userId, setUserId] = useState(new URLSearchParams(window.location.search).get('idUser'))
+    const { idUser } = useParams();
 
     const calculateTotalPrice = () => {
         let totalPrice = 0;
@@ -197,7 +198,7 @@ const ListMenu = () => {
                                 cartItems={cartItems}
                                 setCartItems={setCartItems}
                                 initialPrice={item.price}
-                                userId={userId}
+                                userId={idUser}
                             />
                         ))
                 ) : (

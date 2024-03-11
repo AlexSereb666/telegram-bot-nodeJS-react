@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import './Feedback.css';
-import CustomDropdown from "../customDropdown/CustomDropdown";
+import CustomDropdown from "../../components/customDropdown/CustomDropdown";
 import { useTelegram } from '../../hooks/useTelegram'
 
 const Feedback = () => {

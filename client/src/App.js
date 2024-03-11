@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import './App.css';
 import { useTelegram } from './hooks/useTelegram';
 import { BrowserRouter as Router } from 'react-router-dom';
-import AppRouter from './components/routes/AppRouter';
+import AppRouter from './routes/AppRouter';
 
 function App() {
   const {tg} = useTelegram();

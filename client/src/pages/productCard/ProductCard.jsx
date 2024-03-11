@@ -4,7 +4,7 @@ import './ProductCard.css'
 import { getOne } from '../../http/productAPI'
 import btnBack from '../../assets/img/button-back.png'
 import imgStart from '../../assets/img/star.png'
-import RatingStart from "../ratingStars/RatingStart";
+import RatingStart from "../../components/ratingStars/RatingStart";
 
 const ProductCard = () => {
     const { idUser, idProduct } = useParams()
