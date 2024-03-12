@@ -1,7 +1,7 @@
 import React from "react";
 import "./MessageBoxList.css";
 
-const MessageBoxList = ({ list, onOk, textOk }) => {
+const MessageBoxList = ({ list, onOk, textOk, flag = true }) => {
   const isEmpty = list === undefined || list.length === 0;
 
   const parseDate = (dateString) => {
@@ -28,7 +28,7 @@ const MessageBoxList = ({ list, onOk, textOk }) => {
                     {item.status}
                   </div>
                   <div className="modal-content-list-container-date">
-                    {parseDate(String(item.date))}
+                    {flag ? parseDate(String(item.date)) : item.date}
                   </div>
                 </div>
             ))}

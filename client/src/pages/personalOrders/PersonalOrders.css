@@ -1,6 +1,20 @@
 .personal-orders-container {
     width: 355px;
     margin: 0 auto;
+
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.personal-orders-container-menu {
+    position: fixed;
+    background-color: var(--tg-theme-bg-color);
 }
 
 .personal-orders-container-menu-filter {
@@ -12,4 +26,57 @@
     display: flex;
     padding: 10px 0;
     gap: 10px;
+}
+
+.personal-orders-container-list {
+    padding-top: 100px;
+}
+
+.personal-orders-container-list-item {
+    cursor: pointer;
+    display: flex;
+    color: var(--tg-theme-text-color);
+    border: 3px solid #f7a918;
+    border-radius: 10px;
+    padding: 5px;
+    margin-top: 10px;
+    width: 335px;
+    background-color: rgba(66, 57, 2, 0.253);
+}
+
+.personal-orders-container-list-item:hover {
+    transform: scale(1.05);
+    transition: transform 0.5s ease;
+}
+
+.personal-orders-container-list-item-name {
+    font-size: 16px;
+    width: 180px;
+    pointer-events: none;
+    user-select: none;
+}
+
+.personal-orders-container-list-item-status {
+    font-size: 18px;
+    width: 130px;
+    pointer-events: none;
+    user-select: none;
+}
+
+.personal-orders-container-list-item-price {
+    font-size: 16px;
+    width: 100px;
+    text-align: right;
+    pointer-events: none;
+    user-select: none;
+}
+
+.personal-orders-container-menu-sort-reset img {
+    width: 17px;
+    height: auto;
+}
+
+.personal-orders-cat {
+    display: flex;
+    justify-content: center;
 }
