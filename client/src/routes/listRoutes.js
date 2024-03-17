@@ -1,5 +1,6 @@
 import { FEEDBACK_ROUTE, LIST_MENU_ROUTE, BASKET_USER_ROUTE, 
-    PRODUCT_CARD_ROUTE, MENU_PROMO_CODE_ROUTE, PERSONAL_DATA, PERSONAL_ORDERS } from "./constPath"
+    PRODUCT_CARD_ROUTE, MENU_PROMO_CODE_ROUTE, PERSONAL_DATA, 
+    PERSONAL_ORDERS, ORDERS_BARISTA } from "./constPath"
 import Feedback from '../pages/feedback/Feedback'
 import ListMenu from "../pages/listMenu/ListMenu"
 import Basket from '../pages/basket/Basket'
@@ -7,6 +8,7 @@ import ProductCard from "../pages/productCard/ProductCard"
 import MenuPromoCode from "../pages/menuPromoCode/MenuPromoCode"
 import PersonalData from "../pages/personalData/PersonalData"
 import PersonalOrders from "../pages/personalOrders/PersonalOrders"
+import OrdersBarista from "../pages/ordersBarista/OrdersBarista"
 
 export const listRoutes = [
     {
@@ -36,5 +38,9 @@ export const listRoutes = [
     {
         path: PERSONAL_ORDERS,
         component: PersonalOrders
+    },
+    {
+        path: ORDERS_BARISTA,
+        component: OrdersBarista
     }
 ]

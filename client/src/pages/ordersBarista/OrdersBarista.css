@@ -1,0 +1,74 @@
+.orders-barista-container {
+    width: 355px;
+    margin: 0 auto;
+    color: var(--tg-theme-text-color);
+
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.orders-barista-container-menu-top {
+    padding-bottom: 10px;
+}
+
+.orders-barista-container-menu-bottom {
+    display: flex;
+    gap: 40px;
+    padding-bottom: 20px;
+}
+
+.orders-barista-container-list-item {
+    display: flex;
+}
+
+.orders-barista-container-menu {
+    position: fixed;
+    background-color: var(--tg-theme-bg-color);
+    width: 355px;
+}
+
+.orders-barista-container-list {
+    padding-top: 120px;
+}
+
+.orders-barista-container-list-item {
+    display: flex;
+    margin-bottom: 25px;
+    padding: 5px;
+    border: 3px solid #f7a918;
+    border-radius: 10px;
+    background-color: rgba(49, 39, 6, 0.253);
+
+    cursor: pointer;
+}
+
+.orders-barista-container-list-item:hover {
+    transform: scale(1.05);
+    transition: transform 0.5s ease;
+}
+
+.orders-barista-container-list-item-data-delivery {
+    margin-right: auto;
+    font-size: 18px;
+
+    pointer-events: none;
+    user-select: none;
+}
+
+.orders-barista-container-list-item-status {
+    margin-left: auto;
+    align-self: center;
+}
+
+.orders-barista-container-list-item-message img {
+    cursor: pointer;
+    width: 35px;
+    height: auto;
+    margin-top: 15px;
+}
