@@ -44,7 +44,7 @@
     border: 3px solid #f7a918;
     border-radius: 10px;
     background-color: rgba(49, 39, 6, 0.253);
-
+    align-items: center;
     cursor: pointer;
 }
 
@@ -70,5 +70,4 @@
     cursor: pointer;
     width: 35px;
     height: auto;
-    margin-top: 15px;
 }

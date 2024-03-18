@@ -194,6 +194,9 @@ const PersonalOrders = () => {
                 {listOrdersSorted.length > 0 ? ( listOrdersSorted.map((item) => (
                     <div className="personal-orders-container-list-item" key={item.id} onClick={() => openModal(item.order_products)}>
                         <div className="personal-orders-container-list-item-name">
+                            <div className="personal-orders-container-list-item-name-order-id">
+                                Номер заказа: {item.id}
+                            </div>
                             <div className="personal-orders-container-list-item-name-date">
                                 {parseDate(item.date)}
                             </div>

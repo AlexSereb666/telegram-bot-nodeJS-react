@@ -15,8 +15,14 @@ const updateStatusOrder = async (id, idUser, status) => {
     return data;
 }
 
+const getBaristaOrdersWithStatus = async (baristaId, status) => {
+    const {data} = await $host.get(`api/order/getBaristaOrdersWithStatus/${baristaId}/${status}`);
+    return data;
+}
+
 module.exports = {
     getOrderOne,
     getUnassignedAndBaristaOrders,
     updateStatusOrder,
+    getBaristaOrdersWithStatus,
 };

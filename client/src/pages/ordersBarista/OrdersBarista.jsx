@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import './OrdersBarista.css';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import CustomDropdown from '../../components/customDropdown/CustomDropdown';
 import { getUnassignedAndBaristaOrders, updateStatusOrder } from '../../http/orderAPI';
 import ButtonItem from "../../components/buttonItem/ButtonItem";
@@ -11,6 +11,8 @@ import messageImg from '../../assets/img/message.png';
 
 const OrdersBarista = () => {
     const { idUser } = useParams()
+
+    const navigate = useNavigate()
 
     const listStatusOrders = [
         {id: 1, name: "Отменен"},
@@ -29,7 +31,6 @@ const OrdersBarista = () => {
 
     const [listStatus, setListStatus] = useState([])
     const [selectStatus, setSelectStatus] = useState("")
-    const [selectStatusOrder, setSelectStatusOrder] = useState("")
 
     const [listProducts, setListProducts] = useState([])
     const [showModal, setShowModal] = useState(false)
@@ -142,6 +143,10 @@ const OrdersBarista = () => {
         return formattedDate;
     }
 
+    const navigateMessage = (id) => {
+        navigate(`/messageBot/${id}/${idUser}`)
+    }
+
     return (
         <div className="orders-barista-container">
             <div className="orders-barista-container-menu">
@@ -175,6 +180,9 @@ const OrdersBarista = () => {
                 {listOrdersSorted.length > 0 ? ( listOrdersSorted.map((item, index) => (
                     <div className="orders-barista-container-list-item" ket={index} onClick={() => openModal(item.order_products)}>
                         <div className="orders-barista-container-list-item-data-delivery">
+                            <div className="orders-barista-container-list-item-order-id">
+                                Номер заказа: {item.id}
+                            </div>
                             <div className="orders-barista-container-list-item-data">
                                 {parseDate(item.date)}
                             </div>
@@ -186,7 +194,7 @@ const OrdersBarista = () => {
                             </div>
                         </div>
                         <div className="orders-barista-container-list-item-message" onClick={(e) => e.stopPropagation()}>
-                            <img src={messageImg} alt="грустный котик:(" />
+                            <img src={messageImg} alt="грустный котик:(" onClick={() => navigateMessage(item.userId)}/>
                         </div>
                         <div className="orders-barista-container-list-item-status" onClick={(e) => e.stopPropagation()}>
                             <CustomDropdown

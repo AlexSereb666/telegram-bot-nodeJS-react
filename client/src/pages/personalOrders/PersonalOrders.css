@@ -42,6 +42,7 @@
     margin-top: 10px;
     width: 335px;
     background-color: rgba(66, 57, 2, 0.253);
+    align-items: center;
 }
 
 .personal-orders-container-list-item:hover {
