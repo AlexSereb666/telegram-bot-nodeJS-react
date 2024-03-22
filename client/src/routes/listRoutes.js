@@ -1,7 +1,7 @@
 import { FEEDBACK_ROUTE, LIST_MENU_ROUTE, BASKET_USER_ROUTE, 
     PRODUCT_CARD_ROUTE, MENU_PROMO_CODE_ROUTE, PERSONAL_DATA, 
     PERSONAL_ORDERS, ORDERS_BARISTA, MESSAGE_USER_BOT,
-    LIST_COURIER_BARISTA } from "./constPath"
+    LIST_COURIER_BARISTA, ORDERS_COURIER } from "./constPath"
 import Feedback from '../pages/feedback/Feedback'
 import ListMenu from "../pages/listMenu/ListMenu"
 import Basket from '../pages/basket/Basket'
@@ -12,6 +12,7 @@ import PersonalOrders from "../pages/personalOrders/PersonalOrders"
 import OrdersBarista from "../pages/ordersBarista/OrdersBarista"
 import MessageBot from "../pages/messageBot/MessageBot"
 import ListCourier from "../pages/listCourier/ListCourier"
+import OrdersCourier from "../pages/ordersCourier/OrdersCourier"
 
 export const listRoutes = [
     {
@@ -53,5 +54,9 @@ export const listRoutes = [
     {
         path: LIST_COURIER_BARISTA,
         component: ListCourier
+    },
+    {
+        path: ORDERS_COURIER,
+        component: OrdersCourier
     }
 ]

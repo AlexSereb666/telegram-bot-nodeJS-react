@@ -1,0 +1,68 @@
+.orders-courier-container {
+    width: 355px;
+    margin: 0 auto;
+    color: var(--tg-theme-text-color);
+
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.orders-courier-container-menu {
+    position: fixed;
+    padding-top: 10px;
+    background-color: var(--tg-theme-bg-color);
+}
+
+.orders-courier-container-list {
+    padding-top: 120px;
+}
+
+.orders-courier-container-menu-top {
+    display: flex;
+    gap: 10px;
+}
+
+.orders-courier-container-menu-bottom {
+    padding-top: 10px;
+}
+
+.orders-courier-container-list-item {
+    display: flex;
+    margin-bottom: 25px;
+    padding: 5px;
+    border: 3px solid #f7a918;
+    border-radius: 10px;
+    background-color: rgba(49, 39, 6, 0.253);
+    align-items: center;
+    cursor: pointer;
+}
+
+.orders-courier-container-list-item:hover {
+    transform: scale(1.05);
+    transition: transform 0.5s ease;
+}
+
+.orders-courier-container-list-item-data-info {
+    margin-right: auto;
+    font-size: 18px;
+
+    pointer-events: none;
+    user-select: none;
+}
+
+.orders-courier-container-list-item-status {
+    margin-left: auto;
+    align-self: center;
+}
+
+.orders-courier-container-list-item-message img {
+    cursor: pointer;
+    width: 35px;
+    height: auto;
+}
