@@ -20,8 +20,23 @@ const addRating = async (userId, productId, rate) => {
     return data;
 }
 
-const getOneFeedbackUser = async(id) => {
-    const {data} = await $host.get(`api/feedback/getOneFeedbackUser/${id}`)
+const getOneFeedbackUser = async (id) => {
+    const {data} = await $host.get(`api/feedback/getOneFeedbackUser/${id}`);
+    return data;
+}
+
+const getAll = async () => {
+    const {data} = await $host.get('api/user/getAllUsers');
+    return data;
+}
+
+const deleteUserById = async (id) => {
+    const {data} = await $host.delete(`api/user/deleteUserById/` + id);
+    return data;
+}
+
+const updateData = async (id, name, role, chatId, address) => {
+    const {data} = await $host.put(`api/user/updateData/${id}`, {name, role, chatId, address});
     return data;
 }
 
@@ -30,5 +45,8 @@ module.exports = {
     updateUserAddress,
     getUserProductRating,
     addRating,
-    getOneFeedbackUser
+    getOneFeedbackUser,
+    getAll,
+    deleteUserById,
+    updateData,
 };

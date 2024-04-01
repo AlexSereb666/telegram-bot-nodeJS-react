@@ -1,0 +1,44 @@
+.admin-menu-edit-user {
+    width: 355px;
+    margin: 0 auto;
+
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.admin-menu-edit-user-btn-back img {
+    width: 40px;
+    height: auto;
+    padding-bottom: 15px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.admin-menu-edit-user-btn-back img:hover {
+    transform: scale(0.9);
+}
+
+.admin-menu-edit-user-info {
+    color: var(--tg-theme-text-color);
+}
+
+.admin-menu-edit-user-info-chatId,
+.admin-menu-edit-user-info-date-registration,
+.admin-menu-edit-user-info-telegramId {
+    font-size: 22px;
+    padding-bottom: 20px;
+}
+
+.admin-menu-edit-user-menu-top,
+.admin-menu-edit-user-menu-bottom {
+    display: flex;
+    width: 320px;
+    padding-top: 10px;
+    gap: 5px;
+}
