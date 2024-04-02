@@ -18,7 +18,6 @@ const AdminMenuEditUser = () => {
     const [role, setRole] = useState("")
 
     const [showModal, setShowModal] = useState(false)
-    const [message, setMessage] = useState("")
 
     const listRole = [
         { id: 1, name: 'USER' },

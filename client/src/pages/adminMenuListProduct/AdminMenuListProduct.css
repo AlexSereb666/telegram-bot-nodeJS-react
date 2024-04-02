@@ -1,0 +1,100 @@
+.admin-menu-list-product-container {
+    width: 355px;
+    margin: 0 auto;
+
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.admin-menu-list-product-container-menu {
+    padding-top: 20px;
+    background-color: var(--tg-theme-bg-color);
+    position: fixed;
+}
+
+.admin-menu-list-product-container-menu-filter {
+    display: flex;
+    gap: 10px;
+}
+
+.admin-menu-list-product-container-list {
+    padding-top: 190px;
+}
+
+.admin-menu-list-product-container-list-item {
+    display: flex;
+    background-color: rgba(48, 23, 5, 0.445);
+    box-shadow: 0 0 50px rgba(207, 136, 4, 0.164);
+    border: 2px solid #f7a918;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 320px;
+    height: 50px;
+    cursor: pointer;
+    color: var(--tg-theme-text-color);
+}
+
+.admin-menu-list-product-container-list-item:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease
+}
+
+.admin-menu-list-product-container-list-item-img img {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    pointer-events: none;
+    user-select: none;  
+}
+
+.admin-menu-list-product-container-list-item-img {
+    margin-left: 3px;
+    margin-top: 3px;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border: 2px solid #f7a918;
+    border-radius: 2px;
+}
+
+.admin-menu-list-product-container-list-item-name {
+    margin-left: 10px;
+    align-self: center;
+    font-size: 16px;
+    width: 70px;
+}
+
+.admin-menu-list-product-container-list-item-delete {
+    align-self: center;
+    margin-left: auto;
+    margin-right: 5px;
+}
+
+.admin-menu-list-product-container-list-item-delete img {
+    width: 20px;
+    height: auto;
+    cursor: pointer;
+}
+
+.admin-menu-list-product-container-menu-button {
+    display: flex;
+    padding-top: 10px;
+    gap: 20px;
+}
+
+.admin-menu-list-product-container-list-item-block {
+    align-self: center;
+    font-size: 16px;
+    width: 80px;
+}
+
+.admin-menu-list-product-container-list-item-price {
+    align-self: center;
+    font-size: 16px;
+}
