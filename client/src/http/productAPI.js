@@ -29,3 +29,23 @@ export const deleteProduct = async (id) => {
     const {data} = await $host.delete(`api/product/deleteProduct/${id}`)
     return data
 }
+
+export const getDesc = async (productId) => {
+    const {data} = await $host.get(`api/product/getDesc/${productId}`);
+    return data;
+}
+
+export const editDesc = async (productId, descriptionId, title, description) => {
+    const {data} = await $host.put(`api/product/editDesc/${productId}/${descriptionId}`, { title, description });
+    return data;
+}
+
+export const deleteDesc = async (id) => {
+    const {data} = await $host.delete(`api/product/deleteDesc/${id}`);
+    return data;
+}
+
+export const createDescription = async (productId, title, description) => {
+    const {data} = await $host.post('api/product/createDescription', { productId, title, description });
+    return data;
+}

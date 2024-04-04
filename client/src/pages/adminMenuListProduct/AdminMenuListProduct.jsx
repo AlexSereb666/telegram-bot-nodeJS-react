@@ -10,6 +10,7 @@ import { getOneView } from '../../http/viewAPI'
 import deleteImg from '../../assets/img/delete.png'
 import ButtonItem from "../../components/buttonItem/ButtonItem"
 import MessageBox from "../../components/messageBox/MessageBox";
+import { ADD_PRODUCT, ADMIN_LIST_TYPE, ADMIN_LIST_VIEW } from '../../routes/constPath';
 
 const AdminMenuListProduct = () => {
     const navigate = useNavigate()
@@ -174,16 +175,19 @@ const AdminMenuListProduct = () => {
                     <div className="admin-menu-list-product-container-menu-button-type">
                         <ButtonItem
                             name="Типы"
+                            onClick={() => navigate(ADMIN_LIST_TYPE)}
                         />
                     </div>
                     <div className="admin-menu-list-product-container-menu-button-view">
                         <ButtonItem
                             name="Виды"
+                            onClick={() => navigate(ADMIN_LIST_VIEW)}
                         />
                     </div>
                     <div className="admin-menu-list-product-container-menu-button-product">
                         <ButtonItem
                             name="Добавить продукт"
+                            onClick={() => navigate(ADD_PRODUCT)}
                         />
                     </div>
                 </div>
@@ -191,7 +195,7 @@ const AdminMenuListProduct = () => {
             <div className="admin-menu-list-product-container-list">
                 {sortListProduct.length > 0 ? (
                     sortListProduct.map((item) => (
-                        <div className="admin-menu-list-product-container-list-item" key={item.id}>
+                        <div className="admin-menu-list-product-container-list-item" key={item.id} onClick={() => navigate(`/adminEditProduct/${item.id}`)}>
                             <div className="admin-menu-list-product-container-list-item-img">
                                 <img src={process.env.REACT_APP_API_URL + item.img} alt="not found img" />
                             </div>

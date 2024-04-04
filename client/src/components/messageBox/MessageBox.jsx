@@ -3,7 +3,7 @@ import "./MessageBox.css";
 import CustomInput from '../customInput/CustomInput'
 
 const MessageBox = ({ message, onYes, onNo, textNo, textYes, check, 
-  inputValue, setInputValue, oneButton = false }) => {
+  inputValue, setInputValue, oneButton = false, label = "Введите адрес..." }) => {
   return (
     <div className="modal">
       <div className="modal-content">
@@ -12,7 +12,7 @@ const MessageBox = ({ message, onYes, onNo, textNo, textYes, check,
         : (<CustomInput 
           value={inputValue} 
           setValue={setInputValue} 
-          label={"Введите адрес..."}
+          label={label}
           type="text"
         />)}
         <div className="modal-buttons">

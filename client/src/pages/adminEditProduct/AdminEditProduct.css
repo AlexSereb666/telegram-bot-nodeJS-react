@@ -1,0 +1,132 @@
+.admin-edit-product-container {
+    width: 355px;
+    margin: 0 auto;
+
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.admin-edit-product-container-info-img {
+    margin-left: 110px;
+    padding-bottom: 20px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    
+}
+
+.admin-edit-product-container-info-img img {
+    width: 100px;
+    height: auto;
+    border-radius: 10px;
+    border: solid 5px #1d8daf;
+}
+
+
+.admin-edit-product-container-info-buttons {
+    width: 320px;
+    display: flex;
+    gap: 10px;
+}
+
+.admin-edit-product-container-list-desc {
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+.admin-edit-product-container-list-desc-item {
+    display: flex;
+    background-color: rgba(48, 23, 5, 0.445);
+    box-shadow: 0 0 50px rgba(207, 136, 4, 0.164);
+    border: 2px solid #f7a918;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 320px;
+    height: 50px;
+    cursor: pointer;
+    color: var(--tg-theme-text-color);
+}
+
+.admin-edit-product-container-list-desc-item:hover {
+    transform: scale(1.01);
+    transition: transform 0.2s ease
+}
+
+.admin-edit-product-container-list-desc {
+    padding-top: 20px;
+}
+
+.admin-edit-product-container-list-desc-item-title {
+    margin-left: 10px;
+    align-self: center;
+    font-size: 16px;
+    width: 70px;
+}
+
+.admin-menu-list-product-container-list-item-delete {
+    align-self: center;
+    margin-left: auto;
+    margin-right: 5px;
+}
+
+.admin-menu-list-product-container-list-item-delete img {
+    width: 20px;
+    height: auto;
+    cursor: pointer;
+}
+
+.modal-desc {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.699);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content-desc {
+    font-size: 18px;
+    background-color: var(--tg-theme-bg-color);
+    color: var(--tg-theme-text-color);
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.modal-desc::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: not-allowed;
+    z-index: -1; /* Переместите подложку под все остальные элементы */
+}
+
+.modal-content-desc-textarea textarea {
+    font-size: 20px;
+    width: 320px;
+    height: 200px;
+    resize: none;
+    border: 3px solid #f7a918;
+    border-radius: 5px;
+    background-color: transparent;
+    color: var(--tg-theme-text-color);
+    margin-bottom: 20px;
+}
+
+.modal-content-desc-button {
+    display: flex;
+    gap: 70px;
+}

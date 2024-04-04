@@ -1,0 +1,20 @@
+.Custom-Dropdown-container {
+    margin-bottom: 20px;
+}
+.file-custom {
+    margin-bottom: 30px;
+}
+
+.add-product-container {
+    width: 355px;
+    margin: 0 auto;
+
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
