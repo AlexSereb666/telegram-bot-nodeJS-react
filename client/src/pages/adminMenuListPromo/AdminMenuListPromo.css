@@ -1,0 +1,96 @@
+.admin-menu-list-promo {
+    width: 355px;
+    margin: 0 auto;
+
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.admin-menu-list-promo-menu {
+    padding-top: 20px;
+    background-color: var(--tg-theme-bg-color);
+    position: fixed;
+}
+
+.admin-menu-list-promo-list {
+    padding-top: 200px;
+}
+
+.admin-menu-list-promo-menu-sort {
+    display: flex;
+    width: 320px;
+    gap: 10px;
+    padding-bottom: 10px;
+}
+
+.admin-menu-list-promo-list-item {
+    display: flex;
+    background-color: rgba(48, 23, 5, 0.445);
+    box-shadow: 0 0 50px rgba(207, 136, 4, 0.164);
+    border: 2px solid #f7a918;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 340px;
+    height: 50px;
+    cursor: pointer;
+    color: var(--tg-theme-text-color);
+}
+
+.admin-menu-list-promo-list-item:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease
+}
+
+.admin-menu-list-promo-list-item-code {
+    margin-left: 10px;
+    align-self: center;
+    font-size: 16px;
+    width: 60px;
+}
+
+.admin-menu-list-promo-list-item-discount {
+    align-self: center;
+    font-size: 16px;
+    width: 50px;
+}
+
+.admin-menu-list-promo-list-item-date {
+    align-self: center;
+    font-size: 16px;
+    width: 90px;
+}
+
+.admin-menu-list-promo-list-item-count {
+    align-self: center;
+    font-size: 16px;
+    width: 30px;
+}
+
+.admin-menu-list-promo-list-item-status {
+    align-self: center;
+    font-size: 16px;
+}
+
+.admin-menu-list-promo-list-item-delete {
+    align-self: center;
+    margin-left: auto;
+    margin-right: 5px;
+}
+
+.admin-menu-list-promo-list-item-delete img {
+    width: 20px;
+    height: auto;
+    cursor: pointer;
+}
+
+.modal-content-desc-btns {
+    padding-top: 20px;
+    display: flex;
+    gap: 100px;
+}

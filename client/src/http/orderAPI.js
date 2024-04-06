@@ -35,6 +35,21 @@ const getCourierOrdersWithStatusFree = async (status) => {
     return data;
 }
 
+const getAll = async () => {
+    const { data } = await $host.get('api/order/getOrdersAll');
+    return data;
+}
+
+const deleteOrder = async (id) => {
+    const { data } = await $host.delete(`api/order/deleteOrder/${id}`);
+    return data;
+}
+
+const updateStatusAdmin = async (id, status) => {
+    const { data } = await $host.put(`api/order/updateStatusOrderAdmin/${id}`, { status });
+    return data;
+}
+
 module.exports = {
     getOrderOne,
     getUnassignedAndBaristaOrders,
@@ -43,4 +58,7 @@ module.exports = {
     getCourierOrdersWithStatus,
     getCourierOrdersWithStatusFree,
     updateStatusOrderCourier,
+    getAll,
+    deleteOrder,
+    updateStatusAdmin,
 };

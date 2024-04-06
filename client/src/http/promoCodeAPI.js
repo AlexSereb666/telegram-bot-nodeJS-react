@@ -39,3 +39,8 @@ export const addPromoCodeToProduct = async (promoCodeId, productId) => {
     const { data } = await $host.post(`api/promocode/addPromoCodeToProduct`, {promoCodeId, productId})
     return data
 }
+
+export const deletePromoCodeProduct = async (promoCodeId, productId) => {
+    const { data } = await $host.delete(`api/promocode/deletePromoCodeProduct/${promoCodeId}/${productId}`)
+    return data;
+}

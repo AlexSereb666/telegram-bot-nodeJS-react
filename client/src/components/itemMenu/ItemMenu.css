@@ -28,6 +28,8 @@
 }
 
 .item-menu-name {
+    align-content: center;
+    height: 40px;
     font-weight: bold;
     color: var(--tg-theme-text-color);
 }
