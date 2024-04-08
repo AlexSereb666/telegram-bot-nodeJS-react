@@ -1,0 +1,22 @@
+.statistic {
+    width: 355px;
+    margin: 0 auto;
+
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.statistic-date {
+    padding-top: 20px;
+}
+
+.statistic-date-before {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

@@ -10,7 +10,7 @@ const AdminFeedback = () => {
     const { idUser } = useParams()
     const navigate = useNavigate()
 
-    const [textBtn, setTextBtn] = useState("Активные")
+    const [textBtn, setTextBtn] = useState("Открытые")
 
     const [listFeedback, setListFeedback] = useState([])
     const [sortListFeedback, setSortListFeedback] = useState([])
@@ -24,15 +24,18 @@ const AdminFeedback = () => {
 
     useEffect(() => {
         setSortListFeedback(listFeedback)
+        sorted()
     }, [listFeedback])
 
     const sorted = () => {
-        if (textBtn === "Активные") {
-            setTextBtn("Все")
+        if (textBtn === "Открытые") {
+            setSortListFeedback(listFeedback.filter(item => item.status === "Закрыт"));
+            setTextBtn("Закрытые");
         } else {
-            setTextBtn("Активные")
+            setSortListFeedback(listFeedback.filter(item => item.status === "Открыт"));
+            setTextBtn("Открытые");
         }
-    }
+    };
 
     const parseDate = (date) => {
         const originalDate = new Date(date);
@@ -46,6 +49,10 @@ const AdminFeedback = () => {
     const openModal = (message) => {
         setMessage(message)
         setShowModal(true)
+    }
+
+    const messageUser = (id) => {
+        navigate(`/messageBot/${id}/${idUser}`)
     }
 
     return (
@@ -67,7 +74,7 @@ const AdminFeedback = () => {
                                 {parseDate(item.date)}
                             </div>
                             <div className="admin-feedback-menu-list-item-message" onClick={(e) => e.stopPropagation()}>
-                                <img src={msgImg} alt="OMG" />
+                                <img src={msgImg} alt="OMG" onClick={() => messageUser(item.id)} />
                             </div>
                         </div>
                     ))
