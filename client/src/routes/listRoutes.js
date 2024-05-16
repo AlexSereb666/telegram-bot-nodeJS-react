@@ -9,7 +9,9 @@ import { FEEDBACK_ROUTE, LIST_MENU_ROUTE, BASKET_USER_ROUTE,
     MESSAGE_ALL,
     ADMIN_FEEDBACK,
     MESSAGE_WORK,
-    STATISTIC} from "./constPath"
+    STATISTIC,
+    SCHEDULE_MAINTENANCE,
+    LIST_MAINTENANCE} from "./constPath"
 import Feedback from '../pages/feedback/Feedback'
 import ListMenu from "../pages/listMenu/ListMenu"
 import Basket from '../pages/basket/Basket'
@@ -35,6 +37,8 @@ import MessageAll from "../pages/messageAll/MessageAll"
 import AdminFeedback from "../pages/adminFeedback/AdminFeedback"
 import MessageWork from "../pages/messageWork/MessageWork"
 import StatisticAdmin from "../pages/statisticAdmin/StatisticAdmin"
+import ScheduleMaintenance from "../pages/scheduleMaintenance/ScheduleMaintenance"
+import ListMaintenance from "../pages/listMaintenance/ListMaintenance"
 
 export const listRoutes = [
     {
@@ -136,5 +140,13 @@ export const listRoutes = [
     {
         path: STATISTIC,
         component: StatisticAdmin
+    },
+    {
+        path: SCHEDULE_MAINTENANCE,
+        component: ScheduleMaintenance
+    },
+    {
+        path: LIST_MAINTENANCE,
+        component: ListMaintenance
     }
 ]

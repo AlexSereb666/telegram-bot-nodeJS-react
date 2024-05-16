@@ -192,7 +192,7 @@ const AdminEditProduct = () => {
                     <CustomDropdown
                         options={listView}
                         onSelect={handleSelectView}
-                        text="Вип продукта"
+                        text="Вид продукта"
                         containerStyle={{ width: '320px' }}
                         selectedItem={selectedView}
                     />

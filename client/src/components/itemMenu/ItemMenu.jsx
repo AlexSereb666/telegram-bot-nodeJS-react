@@ -66,7 +66,7 @@ const ItemMenu = ({ img, name, price, id, cartItems, setCartItems, initialPrice,
             </div>
             <div className='item-menu-name-and-price'>
                 <div className='item-menu-name'>
-                    · {name} ·
+                    {name}
                 </div>
                 <div className='item-menu-price'>
                     ₽ {price}

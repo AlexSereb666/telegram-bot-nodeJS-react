@@ -1,0 +1,44 @@
+.scheduleMaintenance {
+    width: 355px;
+    margin: 0 auto;
+
+    padding-top: 20px;
+
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.scheduleMaintenance-before {
+    padding-top: 20px;
+}
+
+.scheduleMaintenance-description {
+    padding-top: 20px;
+}
+
+.scheduleMaintenance-description-textarea,
+.scheduleMaintenance-notes-textarea {
+    font-size: 22px;
+    width: 350px;
+    height: 130px;
+    resize: none;
+    border: 3px solid #f7a918;
+    border-radius: 5px;
+    background-color: transparent;
+    color: var(--tg-theme-text-color);
+    margin-bottom: 20px;
+}
+
+.scheduleMaintenance-btns {
+    display: flex;
+}
+
+.scheduleMaintenance-btns-message {
+    width: 300px;
+}
